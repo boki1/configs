@@ -5,26 +5,16 @@ call plug#begin()
 " Powerline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" Fancy colors & useful visuals
 Plug 'machakann/vim-highlightedyank'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
-" Source code browsing
+Plug 'bfrg/vim-cpp-modern'
 Plug 'yegappan/taglist'
-
-" File Tree
 Plug 'preservim/nerdtree'
-
-" Comments
 Plug 'preservim/nerdcommenter'
-
-" Semantics
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-" Syntax
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'ilyachur/cmake4vim'
+Plug 'lyuts/vim-rtags'
 Plug 'rust-lang/rust.vim'
 Plug 'stevearc/vim-arduino'
 Plug 'rust-lang/rust.vim'
@@ -32,37 +22,29 @@ Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'nvim-lua/diagnostic-nvim'
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'jiangmiao/auto-pairs'
-
-" Colorthemes
 Plug 'hzchirs/vim-material'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'jacoborus/tender.vim'
 Plug 'NLKNguyen/papercolor-theme'
-
-" Formatting
-
 Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
-
-" Notetaking
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/Limelight.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
+
+source $VIMRUNTIME/mswin.vim
 
 set relativenumber
 set number
 set shell=/bin/zsh
 
 let mapleader="\<Space>"
-
-" Quick-operations
-nmap <C-w> :w<CR>
-nmap <C-q> :wq<CR>
-nmap <C-S-q> :q!<CR>
 
 nnoremap <silent><C-a> 10k<CR>
 nnoremap <silent><C-d> 10j<CR>
@@ -80,20 +62,9 @@ inoremap <silent><C-d> 10j<CR>
 au Filetype c,c++,rust set colorcolumn=100
 au Filetype python set colorcolumn=80
 
+au Filetype c set tabstop=8
+
 set mouse=a
-
-" :␠,set listchars=tab:--->,nbsp:.
-set list!
-if has('gui_running')
-    set listchars=tab:▶\ ,trail:·,extends:\#,nbsp:.
-else
-    set listchars=tab:▶\.,trail:.,extends:\#,nbsp:.
-endif
-
-:nnoremap <leader>l :set invlist<cr>
-set list listchars=tab:❘⠀,trail:·,extends:»,precedes:«,nbsp:×
-set list
-
 set autoindent
 set smartindent
 set cindent
@@ -101,40 +72,33 @@ set noexpandtab
 set shiftwidth=4
 set tabstop=4
 set smarttab
-
 set display+=lastline
 set encoding=utf-8
 set linebreak
 set wrap
 set scrolloff=10
 set sidescrolloff=5
-
 syntax enable
-
 set ruler
 set tabpagemax=10
 set cursorline
 set spell
+set termguicolors
 
 "
 " Material Theme
 " 'dark' | 'palenight' | 'oceanic' | 'light' (needs `set background=light`)
-"
-set termguicolors
-" let g:material_terminal_italics = 1
-" set background=light
-" let g:material_style='light'
-" colorscheme vim-material
+set background=light
+let g:material_style='light'
+colorscheme vim-material
 
-"
 " OneHalf theme
-"
 " syntax on
-colorscheme onehalfdark
-set background=dark
+" colorscheme onehalfwhite
+" set background=white
 
 " Base-16
-" let base16colorspace=256
+let base16colorspace=256
 
 " Papercolor
 " set t_Co=256
@@ -143,18 +107,32 @@ set background=dark
 
 " Tender
 " let g:airline_theme = 'tender'
-
- " if (has("termguicolors"))
- "     set termguicolors
- " endif
+" if (has("termguicolors"))
+"     set termguicolors
+" endif
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
- " syntax enable
+" syntax enable
+" colorscheme tender
 
- " colorscheme tender
- "
- "
- " colorscheme PaperColor
- " set background=dark
+" colorscheme PaperColor
+" set background=dark
+
+" if !has('gui_running')
+"   set t_Co=256
+" endif
+" if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+"   set termguicolors
+" endif
+" set background=dark
+" let base16colorspace=256
+" colorscheme base16-gruvbox-dark-hard
+" syntax on
+" hi Normal ctermbg=NONE
+" " Brighter comments
+" call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+
+
+colorscheme dracula
 
 " Airline
 "
@@ -168,26 +146,15 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 "
 " Clang Formatter
-" 
-let g:clang_format#code_style='gnu'
-autocmd FileType c,cpp ClangFormatAutoEnable
-" map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+"
+let g:clang_format#code_style='google'
+" autocmd FileType c,cpp ClangFormatAutoEnable
+autocmd FileType c ClangFormatAutoEnable
+autocmd FileType c,cpp,objc nnoremap <buffer><C-A-S>l :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-" if you install vim-operator-user
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-" Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
-
-autocmd filetype c nnoremap<F4> :!gcc % -g -o %:r <CR>
-autocmd filetype c nnoremap<F5> :!gcc % -g -o %:r && ./%:r <CR>
-
-autocmd filetype cpp nnoremap<F4> :!g++ % -ggdb -o %:r <CR>
-autocmd filetype cpp nnoremap<F5> :!g++ % -ggdb -o %:r && ./%:r <CR>
-
-autocmd filetype c,cpp nnoremap<leader><m> :!make all<CR>
-
-nnoremap <F5> :SCCompileRunAF -g -Wall -Wextra -std=c++2a<cr>
+nnoremap <F5> :SCCompileRunAF -g -Wall -Wextr -std=c++2a<cr>
 
 "
 " Rust
@@ -195,31 +162,10 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
-
-"
-" END Clang Formatter
-"
-" Python
-"
-nnoremap<F4> <Esc>:w<CR>:! clear; python %<CR>
-nnoremap<F5> <Esc>:w<CR>:! clear; python -i %<CR>
-
-" Rust Formatter
 let g:rustfmt_autosave = 1
 
 autocmd filetype rs nnoremap<F4> :!cargo build<CR>
 autocmd filetype rs nnoremap<F5> :!cargo test<CR>
-
-" Tabularize
-" nmap <lead> :w<CR>
-
-" No arrow keys --- force yourself to use the home row
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
 
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
@@ -246,7 +192,7 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 
 "
 " Coc.nvim
-" 
+"
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -309,7 +255,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -349,34 +295,20 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Using CocList
-" Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "
-" END Coc.nvim 
-"
-
-"
 " NerdTree
-" 
+"
 autocmd vimenter * NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-r> :NERDTreeRefreshRoot<CR>
@@ -396,19 +328,7 @@ call NERDTreeHighlightFile('c', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('cpp', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('ino', 'blue', 'none', '#3366FF', '#151515')
 call NERDTreeHighlightFile('h', 'yellow', 'none', 'yellow', '#151516')
-call NERDTreeHighlightFile('rs', 'green', 'none', 'yellow', '#800080') 
-" #800080 is purple
-
-"
-" Vim-Arduino
-"
-nnoremap <buffer> <leader>am :ArduinoVerify<CR>
-nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
-nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
-nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
-nnoremap <buffer> <leader>ar :ArduinoChoossPort<CR>
-nnoremap <buffer> <leader>ai :ArduinoInfo
+call NERDTreeHighlightFile('rs', 'green', 'none', 'yellow', '#800080')
 
 function! MyStatusLine()
 	let port = arduino#GetPort()
@@ -422,44 +342,15 @@ endfunction
 autocmd BufNewFile,BufRead *.ino g:airline_section_x='%{MyStatusLine()}'
 let g:airline_theme='material'
 
-
-"
-" vim-plug
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pu :PlugUninstall<CR>
-
-"
-" vim-journal
-nnoremap <leader>sj :set filetype=journal<CR>
-
 syntax enable
 filetype plugin indent on
-" Set completeopt to have a better completion experience
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
 set completeopt=menuone,noinsert,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
 " Goyo - markdown
-
 nnoremap <leader>gy :Goyo<CR>
-
-" Python mode 
-
-let g:pymode = 1
-let g:pymode_indent = 1
-let g:pymode_motion = 1
-let g:pymode_lint = 1
-let g:pymode_lint_on_fly = 1
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_rope = 1
-let g:pymode_doc = 1
-
 noremap <silent> <Leader>ac :exe AddColumn()<CR>
 function! AddColumn()
   exe "norm \<C-u>"
@@ -475,7 +366,6 @@ endfunction
 
 highlight ExtraWhitespace ctermfg=grey guibg=red
 augroup WhitespaceMatch
-  " Remove ALL autocommands for the WhitespaceMatch group.
   autocmd!
   autocmd BufWinEnter * let w:whitespace_match_number =
         \ matchadd('ExtraWhitespace', '\s\+$')
@@ -488,7 +378,6 @@ function! s:ToggleWhitespaceMatch(mode)
     call matchdelete(w:whitespace_match_number)
     call matchadd('ExtraWhitespace', pattern, 10, w:whitespace_match_number)
   else
-    " Something went wrong, try to be graceful.
     let w:whitespace_match_number =  matchadd('ExtraWhitespace', pattern)
   endif
 endfunction
@@ -524,46 +413,6 @@ if &term =~ "xterm\\|rxvt"
   " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
 endif
 
-" Semshi - python syntax highlighting
-hi semshiLocal           ctermfg=209 guifg=#ff875f
-hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-hi semshiParameter       ctermfg=75  guifg=#5fafff
-hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-hi semshiFree            ctermfg=218 guifg=#ffafd7
-hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
-hi semshiAttribute       ctermfg=49  guifg=#00ffaf
-hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
-
-hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-sign define semshiError text=E> texthl=semshiErrorSign
-
-nmap <silent> <leader>rr :Semshi rename<CR>
-
-nmap <silent> <Tab> :Semshi goto name next<CR>
-nmap <silent> <S-Tab> :Semshi goto name prev<CR>
-
-nmap <silent> <leader>c :Semshi goto class next<CR>
-nmap <silent> <leader>C :Semshi goto class prev<CR>
-
-" nmap <silent> <leader>f :Semshi goto function next<CR>
-" nmap <silent> <leader>F :Semshi goto function prev<CR>
-
-nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
-nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
-
-nmap <silent> <leader>ee :Semshi error<CR>
-nmap <silent> <leader>ge :Semshi goto error<CR>
-
-function MyCustomPythonHighlights()
-	hi semshiSelf            ctermfg=197 guifg=#ffa500 cterm=bold gui=bold
-	hi semshiAttribute 		 ctermfg=229 guifg=#ffffaf
-endfunction
-autocmd FileType python call MyCustomPythonHighlights()
-
 autocmd VimEnter * if isdirectory(expand('<afile>')) | Explore | endif
 
 " Taglist
@@ -571,11 +420,31 @@ nnoremap <silent> <leader>n :TlistToggle<CR>
 nnoremap <silent> <leader>f :TlistOpen<CR>
 let Tlist_File_Fold_Auto_Close = 1
 
+" Modern C++
+" Disable function highlighting (affects both C and C++ files)
+let g:cpp_no_function_highlight = 1
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1
 
-" Save folding on leave and restore on enter
-" set foldmethod=manual
-" autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview
+" Neovide GUI
+let g:neovide_cursor_vfx_opacity=200.0
+let g:neovide_cursor_vfx_particle_lifetime=1.2
+let g:neovide_cursor_vfx_particle_density=7.0
+let g:neovide_cursor_vfx_particle_speed=10.0
+let g:neovide_cursor_vfx_particle_phase=1.5
+let g:neovide_cursor_vfx_particle_curl=1.0
+let g:neovide_cursor_vfx_mode = "pixiedust"
+let g:neovide_fullscreen=v:true
+let g:neovide_refresh_rate=60
 
+" Folding
+" zR -> unfold all
+" za -> fold toggle
+" zc -> fold close
+" zo -> fold open
 " set foldmethod=syntax
-" set foldnestmax=1
