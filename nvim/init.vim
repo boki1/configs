@@ -26,6 +26,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'yegappan/taglist'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -98,6 +100,10 @@ nnoremap <leader>gy 	:Goyo		<CR>
 nnoremap <leader>gl 	:Limelight!!	<CR>
 nnoremap <silent>tl 	:TlistToggle	<CR>
 nnoremap <silent>tn 	:NERDTreeToggle <CR>
+nnoremap <leader>f 	<cmd>Telescope find_files<cr>
+nnoremap <leader>g 	<cmd>Telescope live_grep<cr>
+nnoremap <leader>fb 	<cmd>Telescope buffers<cr>
+nnoremap <leader>fm 	<cmd>Telescope builtin.man_pages<cr>
 
 " Abbreviations
 iab com /*<CR> *<CR>*/<Up> 
