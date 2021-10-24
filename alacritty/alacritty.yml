@@ -1,0 +1,34 @@
+background_opacity: 0.95
+live_config_reload: true
+
+env:
+  TERM: alacritty
+  SHELL: fish
+
+window:
+  decorations: none
+  startup_mode: Fullscreen
+  dynamic_title: true
+  history: 10000
+  multiplier: 3
+  dimensions:
+    columns: 82
+    lines: 25
+  padding:
+    x: 12
+    y: 12
+
+cursor:
+  unfocused_hollow: false
+  style:
+    shape: Beam
+    blinking: On
+
+font:
+  normal:
+    family: 'JetBrains Mono'
+    style: 'Extralight'
+  size: 9
+
+# This one is also nice. I'll keep it here as a comment in order to not forget it :)
+# 'Iosevka Custom'
