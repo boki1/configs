@@ -4,30 +4,45 @@ set nocompatible
 
 call plug#begin()
 
+Plug 'nvim-lua/plenary.nvim'
+
 " Colorschemes
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jacoborus/tender.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
+Plug 'tomasr/molokai'
+Plug 'mhinz/vim-janah'
 
 " View
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'Rykka/riv.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'mhinz/vim-startify'
 
 " Syntax
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bfrg/vim-cpp-modern'
+Plug 'Rykka/riv.vim'
+
+" Formatters
+Plug 'bronson/vim-trailing-whitespace'
 Plug 'rhysd/vim-clang-format'
 
+" Navigation
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/a.vim'
+Plug 'yuttie/comfortable-motion.vim'
+
+" Semantics
+Plug 'ycm-core/YouCompleteMe'
+
 " Editor
-Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-Plug 'yegappan/taglist'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -67,7 +82,10 @@ hi Cursor ctermbg=grey ctermfg=black
 au BufRead * normal zR
 au Filetype c,c++,rust set colorcolumn=120
 
-colorscheme gruvbox 
+" Colorschemes
+colorscheme janah
+let g:molokai_original = 1
+let g:rehash256 = 1
 if __use_light_colormode | colorscheme yule-light | endif
 
 " Airline
@@ -90,22 +108,36 @@ let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
+" Comfortable motion
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+
+" Rainbow parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 " Mappings
-nnoremap <left> 	:bp		<CR>
-nnoremap <right> 	:bn		<CR>
-nnoremap <silent>s 	:set list!	<CR>
-nnoremap <silent><C-s>	10k
-nnoremap <silent><C-d>	10j
-nnoremap <leader>gy 	:Goyo		<CR>
-nnoremap <leader>gl 	:Limelight!!	<CR>
-nnoremap <silent>tl 	:TlistToggle	<CR>
-nnoremap <silent>tn 	:NERDTreeToggle <CR>
-nnoremap <leader>f 	<cmd>Telescope find_files<cr>
-nnoremap <leader>g 	<cmd>Telescope live_grep<cr>
-nnoremap <leader>fb 	<cmd>Telescope buffers<cr>
-nnoremap <leader>fm 	<cmd>Telescope builtin.man_pages<cr>
+nnoremap <left> 	:bp			<CR>
+nnoremap <right> 	:bn			<CR>
+
+nnoremap <silent>s 	:set list!		<CR>
+nnoremap <leader>gy 	:Goyo			<CR>
+nnoremap <leader>gl 	:Limelight!!		<CR>
+nnoremap <silent>tl 	:TlistToggle		<CR>
+nnoremap <silent>tn 	:NERDTreeToggle 	<CR>
+nnoremap <leader>f 	:Telescope find_files	<CR>
+nnoremap <leader>g 	:Telescope live_grep	<CR>
+nnoremap <leader>fw	:FixWhitespace		<CR>
+
+nnoremap ]h 		<Plug>(GitGutterNextHunk)
+nnoremap [h 		<Plug>(GitGutterPrevHunk)
+
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-s> :call comfortable_motion#flick(-100)<CR>
 
 " Abbreviations
-iab com /*<CR> *<CR>*/<Up> 
+iab com /*<CR> *<CR>*/<Up>
 cabbrev tn NERDTreeToggle
 cabbrev tl TlistToggle
