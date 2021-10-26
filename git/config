@@ -1,10 +1,14 @@
 [user]
 	name = "Kristiyan Stoimenov"
 	email = "kristoimenov@gmail.com"
+	signingkey = 8C8DA6E4A25C661416966D717E69A0B6066F004F
 
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[commit]
+	gpgsign = true
 
 [github]
 	user = boki1
@@ -38,3 +42,10 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+[alias]
+	c = commit
+	s = status
+	st = status
+	lg = log --oneline
+	last = log -1 HEAD
