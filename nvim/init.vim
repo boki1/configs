@@ -1,4 +1,7 @@
-let __use_light_colormode=$LIGHT_VIM
+" __   ___
+" \ \ / (_)_ __  _ _ __
+"  \ V /| | '  \| '_/ _|
+"   \_/ |_|_|_|_|_| \__|
 
 set nocompatible
 
@@ -10,7 +13,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
-Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
 Plug 'mhinz/vim-janah'
 
 " View
@@ -37,25 +40,23 @@ Plug 'yuttie/comfortable-motion.vim'
 
 " Semantics
 Plug 'ycm-core/YouCompleteMe'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Editor
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-let mapleader="\<Space>"
+let mapleader="\<Alt>"
 
 syntax on
 filetype on
 
-set background=dark
-if __use_light_colormode
-	set background=light
-endif
+colorscheme monokai
 
+set background=dark
 set relativenumber
 set number
 set autoindent
@@ -71,6 +72,7 @@ set linebreak
 set wrap
 set scrolloff=10
 set sidescrolloff=5
+set so=10
 set ruler
 set tabpagemax=10
 set foldmethod=syntax
@@ -82,62 +84,5 @@ hi Cursor ctermbg=grey ctermfg=black
 au BufRead * normal zR
 au Filetype c,c++,rust set colorcolumn=120
 
-" Colorschemes
-colorscheme janah
-let g:molokai_original = 1
-let g:rehash256 = 1
-if __use_light_colormode | colorscheme yule-light | endif
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='gruvbox'
-
-" NerdTree
-let g:NERDTreeDirArrowExpandable = ' ▸'
-let g:NERDTreeDIrArrowCollapsible = '▾'
-
-" Goyo and Limelight
-let g:limelight_conceal_ctermfg = 240
-let g:goyo_width = 120
-
-" Syntax Highlighting
-let g:cpp_function_highlight = 0
-let g:cpp_attributes_highlight = 1
-let g:cpp_member_highlight = 1
-let g:cpp_simple_highlight = 1
-
-" Comfortable motion
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
-
-" Rainbow parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" Mappings
-nnoremap <left> 	:bp			<CR>
-nnoremap <right> 	:bn			<CR>
-
-nnoremap <silent>s 	:set list!		<CR>
-nnoremap <leader>gy 	:Goyo			<CR>
-nnoremap <leader>gl 	:Limelight!!		<CR>
-nnoremap <silent>tl 	:TlistToggle		<CR>
-nnoremap <silent>tn 	:NERDTreeToggle 	<CR>
-nnoremap <leader>f 	:Telescope find_files	<CR>
-nnoremap <leader>g 	:Telescope live_grep	<CR>
-nnoremap <leader>fw	:FixWhitespace		<CR>
-
-nnoremap ]h 		<Plug>(GitGutterNextHunk)
-nnoremap [h 		<Plug>(GitGutterPrevHunk)
-
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-s> :call comfortable_motion#flick(-100)<CR>
-
-" Abbreviations
-iab com /*<CR> *<CR>*/<Up>
-cabbrev tn NERDTreeToggle
-cabbrev tl TlistToggle
+source ~/.config/nvim/maps.vim
+source ~/.config/nvim/conf.vim
