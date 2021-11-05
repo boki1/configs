@@ -1,0 +1,40 @@
+
+# Edit configs
+alias nrc="$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
+alias zrc="$EDITOR $XDG_CONFIG_HOME/zsh/zshrc"
+alias arc="$EDITOR $XDG_CONFIG_HOME/env/aliasrc"
+alias vrc="$EDITOR $XDG_CONFIG_HOME/env/varrc"
+alias copy="xclip -selection clipboard"
+
+# Basic commands
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias mkd="mkdir -pv"
+alias ls="exa -l --color=auto --group-directories-first"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+alias e="exit"
+
+# Python
+alias p="python3"
+alias pi="ipython3"
+
+# Git
+alias gitlog="git log --all --graph --oneline --decorate"
+alias gitdiff="git diff --compact-summary"
+alias gitone="git log --oneline"
+alias gs="git status"
+alias gb="git branch"
+alias gd="git diff"
+
+# Cargo
+alias cb="cargo build"
+alias cr="cargo run"
+alias cdoc="cargo doc --open --no-deps --document-private-items"
+
+# Debugging
+alias gdb1="export PURE_PYTHON=1; gdbgui"
+alias core_here="echo 'core' > /proc/sys/kernel/core_pattern"
+alias vg="valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all "

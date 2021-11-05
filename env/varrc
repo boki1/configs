@@ -1,0 +1,8 @@
+export XDG_CONFIG_HOME=$HOME/.config
+export MANPATH="/usr/local/man:$MANPATH"
+export LANG=en_US.UTF-8
+
+export ZSH="~/.config/zsh/oh-my-zsh"
+export ZSH_THEME="cypher"
+
+export EDITOR=/usr/bin/nvim
