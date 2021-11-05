@@ -1,3 +1,6 @@
 zsh/.zcompdump
+zsh/zsh_history
+
 nvim/.netrwhist
-nvim/autoload/plug.vim.old
+nvim/.viminfo
+nvim/autoload/plug.vim
