@@ -4,30 +4,43 @@
 " |_|  |_\__,_| .__/ .__/_|_||_\__, /__/
 "             |_|  |_|         |___/
 
-nnoremap <left> 		:bp					<CR>
-nnoremap <right> 		:bn					<CR>
+map H ^
+map L $
 
-nnoremap <silent>s 		:set list!				<CR>
-nnoremap <leader>gy 		:Goyo					<CR>
-nnoremap <leader>gl 		:Limelight!!				<CR>
-nnoremap <silent>tl 		:TlistToggle				<CR>
-nnoremap <silent>tn 		:NERDTreeToggle 			<CR>
-nnoremap <leader>f 		:Telescope find_files			<CR>
-nnoremap <leader>g 		:Telescope live_grep			<CR>
-nnoremap <silent><leader><C-w>	:FixWhitespace				<CR>
+nnoremap <left> 		:bp							<CR>
+nnoremap <right> 		:bn							<CR>
+" Also :bd for buffer-close
+
+nnoremap j gj
+nnoremap k gk
+nnoremap <C-f>			:Telescope find_files			<CR>
+nnoremap <C-g> 			:Telescope live_grep			<CR>
+
+nnoremap <silent>s 		:set list!					<CR>
+nnoremap <silent>gy 	:Goyo						<CR>
+nnoremap <silent>gl 	:Limelight!!				<CR>
+nnoremap <leader><silent>l 	:Tagbar						<CR>
+nnoremap <leader><silent>n 	:NERDTreeToggle 			<CR>
+nnoremap <silent>fw		:FixWhitespace				<CR>
+nnoremap <silent>gb		:e#							<CR>	" Go back. Usually combined with gf(=go file)
+nnoremap <C-c>			:ClangFormat				<CR>
 
 nnoremap ]h 			:GitGutterNextHunk			<CR>
 nnoremap [h 			:GitGutterPrevHunk			<CR>
 
-nnoremap <silent> <C-d> 	:call comfortable_motion#flick(100)	<CR>
-nnoremap <silent> <C-s> 	:call comfortable_motion#flick(-100)	<CR>
+nnoremap <silent><C-d> 		:call comfortable_motion#flick(100)		<CR>
+nnoremap <silent><C-s> 		:call comfortable_motion#flick(-100)	<CR>
+
+nnoremap <silent> <C-f> :FZF		<CR>
+nnoremap <silent> <C-g> :FZF ~		<CR>
 
 " Snippets
 iab com /*<CR> *<CR>*/<Up>
 
 " Abbreviations
-cabbrev tn NERDTreeToggle
-cabbrev tl TlistToggle
-cabbrev pi PlugInstall
-cabbrev pc PlugClean
-cabbrev pu PlugUpdate
+cabbrev tn 			NERDTreeToggle
+cabbrev tl 			Tagbar
+cabbrev pi 			PlugInstall
+cabbrev pc 			PlugClean
+cabbrev pu 			PlugUpdate
+cabbrev vimconfig 		so ~/.config/nvim/init.vim
