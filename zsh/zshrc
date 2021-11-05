@@ -1,0 +1,26 @@
+source $XDG_CONFIG_HOME/env/varrc
+
+CASE_SENSITIVE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+plugins=(
+	git
+	git-prompt
+	gitignore
+	sudo
+	rustup
+	rust
+	hitchhiker
+	fzf
+	colorize
+	colored-man-pages
+	zsh-autosuggestions
+)
+
+export ZSH=$XDG_CONFIG_HOME/zsh/oh-my-zsh
+
+source $ZSH/oh-my-zsh.sh
+
+source $XDG_CONFIG_HOME/env/aliasrc
