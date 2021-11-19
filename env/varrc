@@ -3,7 +3,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 
 export ZSH="~/.config/zsh/oh-my-zsh"
-export ZSH_THEME="sorin"
+export ZSH_THEME="git-prompt"
 
 export EDITOR=/usr/bin/nvim
 
@@ -12,3 +12,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 export PASSWORD_STORE_DIR=$HOME/archive-secret/pass-store
 export PASSWORD_STORE_CLIP_TIME=10
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+export PASSWORD_STORE_TOMB=/usr/bin/tomb
+export PASSWORD_STORE_TOMB_FILE=$HOME/archive-secret/pass-tomb/password.tomb
+export PASSWORD_STORE_TOMB_KEY=$HOME/archive-secret/pass-tomb/password-key.tomb
+export PASSWORD_STORE_TOMB_SIZE=10

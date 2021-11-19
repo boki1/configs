@@ -1,20 +1,21 @@
-
 # Edit configs
 alias nrc="$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
 alias zrc="$EDITOR $XDG_CONFIG_HOME/zsh/zshrc"
 alias arc="$EDITOR $XDG_CONFIG_HOME/env/aliasrc"
 alias vrc="$EDITOR $XDG_CONFIG_HOME/env/varrc"
-alias copy="xclip -selection clipboard"
+alias envconfig=". ~/.config/env/aliasrc; . ~/.config/env/varrc"
 
 # Basic commands
 alias cp="cp -iv"
+alias copy="xclip -selection clipboard"
 alias mv="mv -iv"
 alias rm="rm -vI"
 alias mkd="mkdir -pv"
-alias ls="exa -l --color=auto --group-directories-first"
+alias ls="exa -lh --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
+alias cat="bat"
 alias e="exit"
 
 # Python
@@ -29,6 +30,13 @@ alias gs="git status"
 alias gb="git branch"
 alias gd="git diff"
 
+function groot () {
+	if [[ "$1" != "--no-pushd" ]] || [[ "$1" != "-n" ]]; then
+		pushd .
+	fi
+	cd `git root 2> /dev/null`
+}
+
 # Cargo
 alias cb="cargo build"
 alias cr="cargo run"
@@ -38,3 +46,7 @@ alias cdoc="cargo doc --open --no-deps --document-private-items"
 alias gdb1="export PURE_PYTHON=1; gdbgui"
 alias core_here="echo 'core' > /proc/sys/kernel/core_pattern"
 alias vg="valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all "
+
+# Variety wallapapers
+alias waln="variety -n > /dev/null"
+alias walp="variety -p > /dev/null"
