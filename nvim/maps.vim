@@ -4,38 +4,44 @@
 " |_|  |_\__,_| .__/ .__/_|_||_\__, /__/
 "             |_|  |_|         |___/
 
-map H ^
-map L $
 
-nnoremap <left> 		:bp							<CR>
-nnoremap <right> 		:bn							<CR>
+" Navigation
+map j gj
+map k gk
+
+map H 		^
+map L 		$
+
+map <left> 	:bp	<CR>
+map <right> :bn	<CR>
 " Also :bd for buffer-close
+"
+map <leader>gb	:e#	<CR>
 
-nnoremap j gj
-nnoremap k gk
-nnoremap <C-f>			:Telescope find_files			<CR>
-nnoremap <C-g> 			:Telescope live_grep			<CR>
-
-nnoremap <silent>s 		:set list!					<CR>
-nnoremap <silent>gy 	:Goyo						<CR>
-nnoremap <silent>gl 	:Limelight!!				<CR>
-nnoremap <leader><silent>l 	:Tagbar						<CR>
-nnoremap <leader><silent>n 	:NERDTreeToggle 			<CR>
-nnoremap <silent>fw		:FixWhitespace				<CR>
-nnoremap <silent>gb		:e#							<CR>	" Go back. Usually combined with gf(=go file)
-nnoremap <C-c>			:ClangFormat				<CR>
-
-nnoremap ]h 			:GitGutterNextHunk			<CR>
-nnoremap [h 			:GitGutterPrevHunk			<CR>
+map ]h 			:GitGutterNextHunk			<CR>
+map [h 			:GitGutterPrevHunk			<CR>
 
 nnoremap <silent><C-d> 		:call comfortable_motion#flick(100)		<CR>
 nnoremap <silent><C-s> 		:call comfortable_motion#flick(-100)	<CR>
 
-nnoremap <silent> <C-f> :FZF		<CR>
-nnoremap <silent> <C-g> :FZF ~		<CR>
+map <silent><C-f> :FZF		<CR>
+map <silent><C-g> :FZF ~	<CR>
+
+map <leader>c	:ClangFormat				<CR>
+map <silent>fw	:FixWhitespace				<CR>
+
+map <silent>gy 	:Goyo						<CR>
+map <silent>gl 	:Limelight!!				<CR>
+
+map <leader>l 	:Tagbar						<CR>
+map <leader>n 	:NERDTreeToggle 			<CR>
+
+map <silent>s 	:set list!					<CR>
+
+
 
 " Snippets
-iab com /*<CR> *<CR>*/<Up>
+iab /* /*<CR>/<up><CR>
 
 " Abbreviations
 cabbrev tn 			NERDTreeToggle
