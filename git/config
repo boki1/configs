@@ -49,3 +49,4 @@
 	st = status
 	lg = log --oneline
 	last = log -1 HEAD
+	root = rev-parse --show-toplevel
