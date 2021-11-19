@@ -2,7 +2,7 @@ source $XDG_CONFIG_HOME/env/varrc
 
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
@@ -10,6 +10,7 @@ plugins=(
 	git-prompt
 	gitignore
 	sudo
+	vi-mode
 	rustup
 	rust
 	hitchhiker
@@ -19,8 +20,17 @@ plugins=(
 	zsh-autosuggestions
 )
 
+# colorize
+ZSH_COLORIZE_STYLE="colorful"
+ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
+
+# vi-mode
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{yellow}+%f"
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
 export ZSH=$XDG_CONFIG_HOME/zsh/oh-my-zsh
-
 source $ZSH/oh-my-zsh.sh
-
 source $XDG_CONFIG_HOME/env/aliasrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
