@@ -12,7 +12,7 @@ let g:rehash256 = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='gruvbox'
+let g:airline_theme='material'
 
 " NerdTree
 let g:NERDTreeDirArrowExpandable = '↘'
@@ -40,3 +40,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Python syntax highlighting
 let g:python_highlight_all = 1
+
+" Material colorscheme
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker'

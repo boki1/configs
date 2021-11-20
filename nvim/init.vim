@@ -15,6 +15,7 @@ Plug 'sickill/vim-monokai'
 Plug 'mhinz/vim-janah'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
+Plug 'kaicataldo/material.vim'
 
 " View
 Plug 'junegunn/goyo.vim'
@@ -64,7 +65,7 @@ let mapleader="\\"
 syntax on
 filetype on
 
-colorscheme dracula
+colorscheme material
 
 set background=dark
 set relativenumber
@@ -89,13 +90,15 @@ set tabpagemax=10
 set foldmethod=syntax
 set listchars=tab:>·,trail:~,extends:>,precedes:<,space:.
 set hidden
+set modifiable
+set mouse=a
 
-hi CursorLine ctermbg=yellow ctermfg=black
-hi Cursor ctermbg=grey ctermfg=black
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+if (has('termguicolors'))
+  set termguicolors
+endif
 
-au BufRead * normal zR
-au Filetype c,c++,rust set colorcolumn=120
-syntax on
+au Filetype * set colorcolumn=120
 
 source ~/.config/nvim/maps.vim
 source ~/.config/nvim/conf.vim
