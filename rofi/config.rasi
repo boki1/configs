@@ -1,0 +1,12 @@
+configuration {
+  	show-icons: true;
+  	icon-theme: "Papirus";
+  	terminal: "alacritty";
+  	modi: "window,drun,ssh,combi";
+  	hide-scrollbar: true;
+ 	theme: "solarized";
+ 	font: "hack 10";
+ 	combi-modi: "window,drun,ssh";
+  	cycle: true;
+  	disable-history: false;
+}

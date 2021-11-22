@@ -16,3 +16,4 @@ cp zathura/zathurarc 		$CONFIG_DIR/zathura/
 cp git/config 				$CONFIG_DIR/git
 cp tmux/tmux.conf 			$CONFIG_DIR/tmux/
 cp env/* 					$CONFIG_DIR/env/
+cp rofi/config.rasi 		$CONFIG_DIR/rofi/
