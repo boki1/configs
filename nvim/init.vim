@@ -29,13 +29,20 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Rykka/riv.vim'
 Plug 'vim-python/python-syntax'
-Plug 'elzr/vim-json'
-Plug 'Shirk/vim-gas'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'NLKNguyen/c-syntax.vim'
+Plug 'vim-syntastic/syntastic'
 Plug 'octol/vim-cpp-enhanced-highlight'
+
+" Language support
+Plug 'rust-lang/rust.vim'
 Plug 'vhdirk/vim-cmake'
+Plug 'elzr/vim-json'
+Plug 'Shirk/vim-gas'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
 
 " Formatters
 Plug 'bronson/vim-trailing-whitespace'

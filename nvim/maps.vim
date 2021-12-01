@@ -38,10 +38,13 @@ map <leader>n 	:NERDTreeToggle 			<CR>
 
 map <silent>s 	:set list!					<CR>
 
+map <a-cr> :YcmCompleter FixIt				<CR>
+
+
 
 
 " Snippets
-iab /* /*<CR>/<up><CR>
+iab com /*<CR><CR>/<Up>
 
 " Abbreviations
 cabbrev tn 			NERDTreeToggle
@@ -49,4 +52,5 @@ cabbrev tl 			Tagbar
 cabbrev pi 			PlugInstall
 cabbrev pc 			PlugClean
 cabbrev pu 			PlugUpdate
-cabbrev vimconfig 		so ~/.config/nvim/init.vim
+cabbrev vimconfig 	so ~/.config/nvim/init.vim
+cabbrev vc 			so ~/.config/nvim/init.vim
