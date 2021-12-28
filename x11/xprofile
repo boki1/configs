@@ -1,0 +1,17 @@
+#!/bin/sh
+
+xrandr --dpi 96
+lux -S 75%
+xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --right-of eDP1 &
+setbg &
+remaps &
+sxhkd &
+
+autostart="mpd xcompmgr dunst unclutter pipewire"
+
+for program in $autostart; do
+	pidof -s "$program" || setsid -f "$program"
+done >/dev/null 2>&1
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"
