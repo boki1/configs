@@ -1,0 +1,7 @@
+bf	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-files
+bd	${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs
+
+cfv	${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim
+cfz	$ZDOTDIR/.zshrc
+cfa	${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc
+cfp	${XDG_CONFIG_HOME:-$HOME/.config}/shell/profile
