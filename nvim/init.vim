@@ -1,12 +1,6 @@
-" __   ___ \ \ / (_)_ __  _ _ __
-"  \ V /| | '  \| '_/ _|
-"   \_/ |_|_|_|_|_| \__|
-
 set nocompatible
 
 call plug#begin()
-
-" Themes
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
@@ -20,44 +14,34 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'ajmwagar/vim-deus'
 Plug 'phanviet/vim-monokai-pro'
-
-" Language
+Plug 'sainnhe/everforest'
+Plug 'tomasiser/vim-code-dark'
 Plug 'plasticboy/vim-markdown'
 Plug 'Rykka/riv.vim'
 Plug 'baskerville/vim-sxhkdrc'
-
+Plug 'beautify-web/js-beautify'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-scripts/a.vim'
 Plug 'semanticart/tag-peek.vim'
-
 Plug 'Shirk/vim-gas'
 Plug 'rust-lang/rust.vim'
 Plug 'JuliaEditorSupport/julia-vim'
-
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'vhdirk/vim-cmake'
-
 Plug 'nvie/vim-flake8'
-
 Plug 'maksimr/vim-jsbeautify'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
-
-" Completion
 Plug 'jiangmiao/auto-pairs'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-
-" Display
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'bronson/vim-trailing-whitespace'
-
-" Integration
 Plug 'kien/ctrlp.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -73,31 +57,31 @@ Plug 'caenrique/nvim-toggle-terminal'
 Plug 'mcchrish/nnn.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'mcchrish/nnn.vim'
-
-" UI
 Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
-
-" Commands
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'airblade/vim-rooter'
 Plug 'dhruvasagar/vim-open-url'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'svermeulen/vim-subversive'
-
-" Misc
+Plug 'doums/darcula'
 Plug 'promix17/typer'
-Plug 'thaerkh/vim-workspace'
-
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 call plug#end()
+
+call glaive#Install()
+Glaive codefmt plugin[mappings]
 
 let mapleader=","
 
 syntax on
 filetype on
 
-colorscheme monokai_pro
+colorscheme darcula
 
 set background=dark
 set relativenumber
@@ -119,7 +103,7 @@ set sidescrolloff=5
 set so=10
 set ruler
 set tabpagemax=10
-set foldmethod=syntax
+set foldmethod=manual
 set listchars=tab:>·,trail:~,extends:>,precedes:<,space:.
 set hidden
 set modifiable
@@ -142,7 +126,6 @@ au Filetype * set colorcolumn=120
 " |_|  |_\__,_| .__/ .__/_|_||_\__, /__/
 "             |_|  |_|         |___/
 
-
 " Navigation
 map j gj
 map k gk
@@ -162,6 +145,8 @@ nnoremap <silent><C-d> :call comfortable_motion#flick(100) <CR>
 nnoremap <silent><C-s> :call comfortable_motion#flick(-100)	<CR>
 
 map <silent><C-f> :FZF <CR>
+
+map <leader>ff :FormatCode<CR>
 
 map <leader>c :ClangFormat<CR>
 map <silent>fw :FixWhitespace<CR>
@@ -312,7 +297,6 @@ endfunction
 
 nmap <leader>j :call GotoJump()<CR>
 nnoremap <C-n> :NnnPicker<CR>
-"nnoremap n :NnnPicker %:p:h<CR>
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
       \ '<c-s>': 'split',
@@ -320,3 +304,21 @@ let g:nnn#action = {
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 autocmd BufEnter * if winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 let g:nnn#command = 'nnn -d'
+
+" Rustfmt
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+
+" Autofmt
+augroup autoformat_settings
+  autocmd FileType c,cpp AutoFormatBuffer clang-format
+  autocmd FileType python AutoFormatBuffer yapf
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType sh AutoFormatBuffer shfmt
+augroup END
+
+" Autosave folds on leave
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
