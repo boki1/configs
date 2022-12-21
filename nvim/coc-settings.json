@@ -1,0 +1,4 @@
+{
+	"clangd.arguments": ["--background-index", "--clang-tidy"],
+	"clangd.fallbackFlags": [ "-std=c++20" ]
+}

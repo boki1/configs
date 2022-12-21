@@ -26,15 +26,11 @@ let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
-" Comfortable motion
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
-
 " Rainbow parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 
 " Material colorscheme
 let g:material_terminal_italics = 1
@@ -117,6 +113,11 @@ nmap <Leader>ut :UndotreeToggle<Enter>
 
 " Coc
 autocmd CursorHold * silent call CocActionAsync('highlight') " Highlight the symbol and its references when holding the cursor
+let g:coc_node_path = '/usr/local/bin/node'
+let g:coc_global_extensions = ['coc-clangd']
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " Colorscheme switcher
 let g:colorscheme_switcher_exclude_builtins = 1
@@ -141,3 +142,11 @@ nmap <leader>; :Buffers<Enter>
 "   },
 " })
 " EOF
+"
+
+" Rainbow parens. fights with cmake-syntax, so work around it:
+let g:rainbow_conf = {
+\   'separately': {
+\       'cmake': 0,
+\   }
+\}

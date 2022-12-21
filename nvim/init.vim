@@ -67,14 +67,18 @@ set scrolloff=2
 " set gdefault
 
 set background=dark
-colo material
+colo gruvbox
 
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 	set grepformat=%f:%l:%c:%m
 endif
 
-set spelllang=en,programming
+if exists("g:neovide")
+	let g:neovide_cursor_vfx_mode = "railgun"
+endif
+
+set spelllang=en
 
 so ~/.config/nvim/map.vim
 so ~/.config/nvim/plug-conf.vim

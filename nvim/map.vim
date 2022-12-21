@@ -2,7 +2,7 @@
 " ┃┃┃┣━┫┣━┛┣━┛┃┃┗┫┃╺┓┗━┓
 " ╹ ╹╹ ╹╹  ╹  ╹╹ ╹┗━┛┗━┛
 
-let mapleader=","
+let mapleader="\<space>"
 
 " General vim maps
 
@@ -23,8 +23,11 @@ map k gk
 map H ^
 map L $
 
-vmap <C-h> :nohlsearch<Enter>
-nmap <C-h> :nohlsearch<Enter>
+" Write to read-only opened files.
+cnoremap sudow w !sudo tee % >/dev/null
+
+vmap <Silent><C-h> :nohlsearch<Enter>
+nmap <Silent><C-h> :nohlsearch<Enter>
 
 map <Left>  :bp<Enter>
 map <Right> :bn<Enter>
@@ -37,25 +40,10 @@ map <Leader>sl :set list!<Enter>
 
 cabbrev vc so ~/.config/nvim/init.vim
 
-" Comfortable motion
-nmap <C-d> :call comfortable_motion#flick(100)<Enter>
-nmap <C-s> :call comfortable_motion#flick(-100)<Enter>
-
 " Ctrl-p
 map <C-b> :CtrlPBufTag<Enter>
 map <C-t> :CtrlPTag<Enter>
 map <C-c> :CtrlPBookmarkDir<Enter>
-
-" You complete me
-" map <A-Enter>   :YcmCompleter FixIt<Enter>
-" map <Leader>gd  :YcmCompleter GoToDefinition<Enter>
-" map <Leader>nr  :YcmCompleter RefactorRename<Enter>
-" map <Leader>dc  :YcmCompleter Doc<Enter>
-" map <Leader>gi  :YcmCompleter GoToImplementation<Enter>
-" map <Leader>gp  :call tag_peek#ShowTag()<Enter>
-
-" nmap  <C-z> :ToggleTerminal<Enter>
-" tmap  <C-z> <C-\><C-n>:ToggleTerminal<Enter>
 
 " vim-plug shotcuts
 cabbrev pi PlugInstall
@@ -63,10 +51,10 @@ cabbrev pc PlugClean
 cabbrev pu PlugUpdate
 
 " Fuzzy finder
-map <C-f> :FZF<Enter>
+nmap <C-f> :GFiles<Enter>
 nmap <Leader>t :BTags<CR>
 nmap <Leader>T :Tags<CR>
-map <Silent><Leader>cl :Colors<Enter>
+nmap <Silent><Leader>cl :Colors<Enter>
 
 " Misc
 map <Leader>ff :FormatCode<Enter>
