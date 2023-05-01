@@ -153,7 +153,7 @@ export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 export FZF_MARKS_FILE="${HOME}/toolkit/fzf-marks"
-export FZF_MARKS_JUMP="^m"
+#export FZF_MARKS_JUMP='^m'
 source "/home/boki/.local/share/cargo/env"
 
 # HACK: For some reason GNOME creates these. I am aware of the

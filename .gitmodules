@@ -1,31 +1,31 @@
-[submodule "zsh/.zplug"]
+[submodule "shell/zsh/.zplug"]
 	path = zsh/.zplug
 	url = https://github.com/zplug/zplug.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/vim-rhubarb"]
-	path = vim/bundle/vim-rhubarb
-	url = https://github.com/tpope/vim-rhubarb
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule "vim/bundle/rust.vim"]
-	path = vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim
-[submodule "vim/bundle/vim-clang-format"]
-	path = vim/bundle/vim-clang-format
-	url = https://github.com/rhysd/vim-clang-format
-[submodule "vim/bundle/coc.nvim"]
-	path = vim/bundle/coc.nvim
-	url = https://github.com/neoclide/coc.nvim
+[submodule "editor/vim/bundle/editor/vim-fugitive"]
+	path = editor/vim/bundle/editor/vim-fugitive
+	url = https://github.com/tpope/editor/vim-fugitive
+[submodule "editor/vim/bundle/editor/vim-rhubarb"]
+	path = editor/vim/bundle/editor/vim-rhubarb
+	url = https://github.com/tpope/editor/vim-rhubarb
+[submodule "editor/vim/bundle/editor/vim-surround"]
+	path = editor/vim/bundle/editor/vim-surround
+	url = https://github.com/tpope/editor/vim-surround
+[submodule "editor/vim/bundle/rust.editor/vim"]
+	path = editor/vim/bundle/rust.editor/vim
+	url = https://github.com/rust-lang/rust.editor/vim
+[submodule "editor/vim/bundle/editor/vim-clang-format"]
+	path = editor/vim/bundle/editor/vim-clang-format
+	url = https://github.com/rhysd/editor/vim-clang-format
+[submodule "editor/vim/bundle/coc.neditor/vim"]
+	path = editor/vim/bundle/coc.neditor/vim
+	url = https://github.com/neoclide/coc.neditor/vim
 	branch = release
-[submodule "vim/bundle/vim-cpp-enhanced-highlight"]
-	path = vim/bundle/vim-cpp-enhanced-highlight
-	url = https://github.com/octol/vim-cpp-enhanced-highlight
-[submodule "vim/bundle/fzf.vim"]
-	path = vim/bundle/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
-[submodule "vim/bundle/fzf"]
-	path = vim/bundle/fzf
+[submodule "editor/vim/bundle/editor/vim-cpp-enhanced-highlight"]
+	path = editor/vim/bundle/editor/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/editor/vim-cpp-enhanced-highlight
+[submodule "editor/vim/bundle/fzf.editor/vim"]
+	path = editor/vim/bundle/fzf.editor/vim
+	url = https://github.com/junegunn/fzf.editor/vim
+[submodule "editor/vim/bundle/fzf"]
+	path = editor/vim/bundle/fzf
 	url = https://github.com/junegunn/fzf
