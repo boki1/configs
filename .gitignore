@@ -4,3 +4,6 @@ zsh/zsh_history
 nvim/.netrwhist
 nvim/.viminfo
 nvim/autoload/plug.vim
+
+# Vim
+vim/.netrwhist

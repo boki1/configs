@@ -1,0 +1,18 @@
+set nocompatible
+
+scriptversion 4
+
+call pathogen#infect()
+call pathogen#helptags()
+
+syntax on
+filetype on
+
+colo intellij
+
+runtime files/mappings.vim
+runtime files/settings.vim
+runtime files/plugins.vim
+runtime files/commands.vim
+runtime files/cyrillic.vim
+runtime files/wiki.vim
