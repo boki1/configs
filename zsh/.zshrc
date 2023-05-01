@@ -1,6 +1,7 @@
 if [ "$TMUX" = "" ]; then tmux; fi
-source $XDG_CONFIG_HOME/shell/profile
-source $XDG_CONFIG_HOME/shell/aliasrc
+
+# NB: Must be before next source since ZPLUG_HOME is set in the profile.
+source $HOME/toolkit/configs/shell/profile.sh
 
 source $ZPLUG_HOME/init.zsh
 
@@ -11,10 +12,7 @@ zplug 'dracula/zsh', as:theme
 ZSH_THEME="dracula"
 
 # Setup fzf
-if [[ ! "$PATH" == */home/boki/down/packages/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/boki/down/packages/fzf/bin"
-fi
-source $HOME/down/packages/fzf/shell/key-bindings.zsh
-source $HOME/down/packages/fzf/shell/completion.zsh
+source $HOME/downl/packages/fzf/shell/key-bindings.zsh
+source $HOME/downl/packages/fzf/shell/completion.zsh
 
 zplug load
