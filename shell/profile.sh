@@ -2,15 +2,21 @@
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+# Added by Toolbox App
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 unsetopt PROMPT_SP
 
 # Default programs:
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="st"
-export BROWSER="brave"
+export EDITOR="vim"
+export VISUAL="gvim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
 export READER="zathura"
+
+# Used by the other "general shell" configuration files:
+export BIG="${HOME}/big"
+export CONFIGS_REPO="${HOME}/toolkit/configs"
 
 export HISTSIZE=1000
 export HISTFILESIZE=2000
@@ -26,6 +32,7 @@ export LESSHISTFILE="-"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export GPG_TTY=$(tty)
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
@@ -33,7 +40,7 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 
 export DICS="/usr/share/stardict/dic/"
-export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+#export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
@@ -129,30 +136,17 @@ ex=🎯:\
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-if pacman -Qs libxft-bgra >/dev/null 2>&1; then
-	# Start graphical server on user's current tty if not already running.
-	[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-else
-	echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`libxft-bgra\`\033[0m must be installed for this build of dwm.
-Please run:
-	\033[32mparu -S libxft-bgra-git\033[0m
-and replace \`libxft\`. Afterwards, you may start the graphical server by running \`startx\`."
-fi
-
-# Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
-
 export ZPLUG_HOME="$HOME/.config/zsh/.zplug"
 
 export FZF_BASE=$HOME/.fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-export PASSWORD_STORE_DIR=$HOME/box/passwds
+export PASSWORD_STORE_DIR=${BIG}/private/passwords
 export PASSWORD_STORE_CLIP_TIME=6
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_TOMB=/usr/bin/tomb
-export PASSWORD_STORE_TOMB_FILE=$HOME/box/passwds/password.tomb
-export PASSWORD_STORE_TOMB_KEY=$HOME/box/passwds/password-key.tomb
+export PASSWORD_STORE_TOMB_FILE=${BIG}/private/password.tomb
+export PASSWORD_STORE_TOMB_KEY=${BIG}/private/password-key.tomb
 export PASSWORD_STORE_TOMB_SIZE=10
 
 export CONAN_USER_HOME=$HOME/.cache/conan
@@ -160,3 +154,12 @@ export CONAN_USER_HOME=$HOME/.cache/conan
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+source "/home/boki/.local/share/cargo/env"
+
+# HACK: For some reason GNOME creates these. I am aware of the
+# fact that it wants it, but I am there to make sure that it does
+# not get them :)
+[ -f "~/Empty*" ] && rm ~/Empty*
+
+source ${CONFIGS_REPO}/aliases.sh
+source ${CONFIGS_REPO}/shortcuts.sh
