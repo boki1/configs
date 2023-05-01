@@ -134,8 +134,6 @@ ex=🎯:\
 *.java=♨:\
 "
 
-[ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
-
 export ZPLUG_HOME="$HOME/.config/zsh/.zplug"
 
 export FZF_BASE=$HOME/.fzf
@@ -161,5 +159,5 @@ source "/home/boki/.local/share/cargo/env"
 # not get them :)
 [ -f "~/Empty*" ] && rm ~/Empty*
 
-source ${CONFIGS_REPO}/aliases.sh
-source ${CONFIGS_REPO}/shortcuts.sh
+source ${CONFIGS_REPO}/shell/aliases.sh
+source ${CONFIGS_REPO}/shell/shortcuts.sh
