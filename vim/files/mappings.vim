@@ -27,13 +27,14 @@ map <Leader>gb :e#<Enter>
 map <Leader>sl :set list!<Enter>
 
 nmap <C-f> 		:GFiles		<CR>
+nmap <C-m>		:OpenWiki	<CR>
+
 nmap <Silent><Leader>t 	:BTags		<CR>
 nmap <Silent><Leader>T 	:Tags		<CR>
 nmap <Silent><Leader>cl :Colors		<CR>
 
 map <Silent><Leader>gy 	:Goyo		<CR>
 map <Silent><Leader>l 	:Tagbar		<CR>
-map <Silent><Leader>ws 	:OpenWiki	<CR>
 map <Silent><Leader>ff 	:FormatCode		<CR>
 map <Silent><Leader>gl 	:Limelight!!	<CR>
 map <Silent><Leader>fw 	:FixWhitespace	<CR>

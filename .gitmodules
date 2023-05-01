@@ -23,9 +23,6 @@
 [submodule "vim/bundle/vim-cpp-enhanced-highlight"]
 	path = vim/bundle/vim-cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight
-[submodule "vim/bundle/vimwiki"]
-	path = vim/bundle/vimwiki
-	url = https://github.com/vimwiki/vimwiki
 [submodule "vim/bundle/fzf.vim"]
 	path = vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim

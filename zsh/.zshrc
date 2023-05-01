@@ -8,6 +8,7 @@ source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug 'dracula/zsh', as:theme
+zplug 'urbainvaes/fzf-marks'
 
 ZSH_THEME="dracula"
 

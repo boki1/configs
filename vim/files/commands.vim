@@ -87,9 +87,9 @@ function! s:DiffPaste(flags)
 endfunction
 
 function! s:OpenWiki()
-	let l:wiki_names = []
-	for wiki_desc in g:vimwiki_list
-		let wiki_names = add(wiki_names, wiki_desc.name)
-	endfor
-	call fzf#run({'source': l:wiki_names, 'sink': function('WikiOpenIndex'), 'window': {'width': 0.5, 'height': 0.4}})
+	call fzf#run(fzf#wrap({
+		\   'options': '--prompt "Open wiki> "',
+		\ 	'source': 'cat ~/toolkit/fzf-marks | sed "s/.*: \(.*\)$/\1/"',
+		\ 	'sink': 'lcd'},
+		\ 0))
 endfunction
