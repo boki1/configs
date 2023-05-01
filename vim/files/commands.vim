@@ -6,6 +6,7 @@ command! SudoWrite call s:SudoWrite()
 
 command! Reconfigure so ~/.vim/vimrc
 
+command! OpenFile call s:OpenFile()
 command! OpenWiki call s:OpenWiki()
 
 "
@@ -92,4 +93,10 @@ function! s:OpenWiki()
 		\ 	'source': 'cat ~/toolkit/fzf-marks | sed "s/.*: \(.*\)$/\1/"',
 		\ 	'sink': 'lcd'},
 		\ 0))
+endfunction
+
+function! s:OpenFile()
+	echo system('git rev-parse --is-inside-work-tree') =~ 'true'
+		\	? execute('GFiles')
+		\	: execute('Files')
 endfunction
