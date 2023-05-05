@@ -29,3 +29,6 @@
 [submodule "editor/vim/bundle/fzf"]
 	path = editor/vim/bundle/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "editor/vim/bundle/vim-trailing-whitespace"]
+	path = editor/vim/bundle/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
