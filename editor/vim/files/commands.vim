@@ -9,6 +9,8 @@ command! Reconfigure so ~/.vim/vimrc
 command! OpenFile call s:OpenFile()
 command! OpenWiki call s:OpenWiki()
 
+command! PreviewIdentInfo call s:PreviewIdentInfo()
+
 "
 " Implementations
 "
@@ -99,4 +101,12 @@ function! s:OpenFile()
 	echo system('git rev-parse --is-inside-work-tree') =~ 'true'
 		\	? execute('GFiles')
 		\	: execute('Files')
+endfunction
+
+function! s:PreviewIdentInfo()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
 endfunction
