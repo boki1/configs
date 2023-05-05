@@ -26,6 +26,8 @@ map <Leader>bd :bd<Enter>
 map <Leader>gb :e#<Enter>
 map <Leader>sl :set list!<Enter>
 
+nmap <C-b> 		:Buffers	<CR>
+
 nmap <C-f> 		:OpenFile	<CR>
 nmap <C-m>		:OpenWiki	<CR>
 
