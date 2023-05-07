@@ -29,9 +29,6 @@
 [submodule "shell/zsh/.zplug"]
 	path = shell/zsh/.zplug
 	url = https://github.com/zplug/zplug.git
-[submodule "editor/vim/bundle/vim-clang-format"]
-	path = editor/vim/bundle/vim-clang-format
-	url = https://github.com/rhysd/vim-clang-format
 [submodule "editor/vim/bundle/vim-signify"]
 	path = editor/vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
