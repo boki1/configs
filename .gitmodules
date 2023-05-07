@@ -41,3 +41,6 @@
 [submodule "editor/vim/bundle/vim-autoformat"]
 	path = editor/vim/bundle/vim-autoformat
 	url = https://github.com/vim-autoformat/vim-autoformat
+[submodule "editor/vim/bundle/vim-expand-region"]
+	path = editor/vim/bundle/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region
