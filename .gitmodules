@@ -38,3 +38,6 @@
 [submodule "editor/vim/bundle/vim-auto-save"]
 	path = editor/vim/bundle/vim-auto-save
 	url = https://github.com/907th/vim-auto-save
+[submodule "editor/vim/bundle/vim-autoformat"]
+	path = editor/vim/bundle/vim-autoformat
+	url = https://github.com/vim-autoformat/vim-autoformat
