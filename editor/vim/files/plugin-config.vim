@@ -26,3 +26,6 @@ nmap <leader>; 	:Buffers	<CR>
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
+
+" Airline
+let g:airline_theme='base16_nord'

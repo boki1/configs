@@ -8,7 +8,7 @@ call pathogen#helptags()
 syntax on
 filetype on
 
-colo tender
+colo nord
 
 runtime files/mappings.vim
 runtime files/settings.vim
