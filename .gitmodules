@@ -35,3 +35,6 @@
 [submodule "editor/vim/bundle/vim-signify"]
 	path = editor/vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
+[submodule "editor/vim/bundle/vim-auto-save"]
+	path = editor/vim/bundle/vim-auto-save
+	url = https://github.com/907th/vim-auto-save

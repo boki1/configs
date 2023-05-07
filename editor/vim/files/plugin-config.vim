@@ -21,3 +21,8 @@ inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 " Fuzzy finder
 map  <C-p> 		:Files		<CR>
 nmap <leader>; 	:Buffers	<CR>
+
+" Auto-save
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
