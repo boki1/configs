@@ -44,3 +44,6 @@
 [submodule "editor/vim/bundle/vim-expand-region"]
 	path = editor/vim/bundle/vim-expand-region
 	url = https://github.com/terryma/vim-expand-region
+[submodule "editor/vim/bundle/vim-airline"]
+	path = editor/vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
