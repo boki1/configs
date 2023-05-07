@@ -33,6 +33,15 @@ Installing the necessary LSPs:
 :CocInstall coc-clangd coc-vimlsp coc-cmake coc-sh
 ```
 
+*Setting up zsh*
+
+On initial startup no actual change will be noticed before the plugins
+are installed. This I have set to happen manually, thus you have to
+execute the following command:
+```zsh
+$ zplug install
+```
+
 ----
 
 ## To do
