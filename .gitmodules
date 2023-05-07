@@ -50,3 +50,6 @@
 [submodule "editor/vim/bundle/vim-tmux-navigator"]
 	path = editor/vim/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "applications/tmux/plugins/tpm"]
+	path = applications/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

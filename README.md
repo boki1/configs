@@ -42,6 +42,17 @@ execute the following command:
 $ zplug install
 ```
 
+*Setting up tmux*
+
+On initial startup the plugins won't be installed. This is done by pressing
+`prefix + I` (capital i, as in **I**nstall) to fetch the plugins. After that
+the configuration has to be source again:
+```zsh
+$ tmux source ~/.config/tmux/tmux.conf
+```
+
+_BTW: [tmux cheatsheet](https://tmuxcheatsheet.com/)._
+
 ----
 
 ## To do
