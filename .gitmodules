@@ -14,9 +14,6 @@
 	path = editor/vim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
 	branch = release
-[submodule "editor/vim/bundle/vim-cpp-enhanced-highlight"]
-	path = editor/vim/bundle/vim-cpp-enhanced-highlight
-	url = https://github.com/octol/vim-cpp-enhanced-highlight
 [submodule "editor/vim/bundle/fzf.vim"]
 	path = editor/vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -53,3 +50,6 @@
 [submodule "applications/tmux/plugins/tpm"]
 	path = applications/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "editor/vim/bundle/vim-cpp-modern"]
+	path = editor/vim/bundle/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern
