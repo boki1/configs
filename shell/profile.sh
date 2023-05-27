@@ -163,3 +163,4 @@ source "/home/boki/.local/share/cargo/env"
 
 source ${CONFIGS_REPO}/shell/aliases.sh
 source ${CONFIGS_REPO}/shell/shortcuts.sh
+source ${CONFIGS_REPO}/shell/functions.sh
