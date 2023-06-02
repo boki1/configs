@@ -30,6 +30,8 @@ nmap <C-b> 		:Buffers	<CR>
 
 nmap <C-f> 		:OpenFile	<CR>
 nmap <C-m>		:OpenWiki	<CR>
+nmap <C-s>		:BuildScript	<CR>
+nmap <C-r>		:Reconfigure	<CR>
 
 nmap <Silent><Leader>t 	:BTags		<CR>
 nmap <Silent><Leader>T 	:Tags		<CR>

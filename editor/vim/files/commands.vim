@@ -12,6 +12,8 @@ command! OpenWiki call s:OpenWiki()
 
 command! PreviewIdentInfo call s:PreviewIdentInfo()
 
+command! BuildScript call s:BuildScript()
+
 "
 " Implementations
 "
@@ -110,4 +112,13 @@ function! s:PreviewIdentInfo()
   else
     call feedkeys('K', 'in')
   endif
+endfunction
+
+function! s:BuildScript()
+    let term_nr = bufnr('BuildScriptTerminal')
+    if term_nr > 0
+		execute 'bd' term_nr
+    endif
+    execute 'vert terminal ./build.sh --skip-ccmake --output=cmake-build-debug'
+    execute 'file BuildScriptTerminal'
 endfunction
