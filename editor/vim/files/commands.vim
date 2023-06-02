@@ -1,6 +1,7 @@
 command! -nargs=* DiffPaste call s:DiffPaste(<q-args>)
 
 command! -nargs=+ MapToggle call s:MapToggle(<f-args>)
+command! -nargs=1 MapExists echo maparg(<q-args>, 'n') != ''
 
 command! SudoWrite call s:SudoWrite()
 
