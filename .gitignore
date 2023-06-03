@@ -6,4 +6,4 @@ nvim/.viminfo
 nvim/autoload/plug.vim
 
 # Vim
-vim/.netrwhist
+editor/vim/.netrwhist
