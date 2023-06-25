@@ -20,6 +20,7 @@ export CONFIGS_REPO="${HOME}/toolkit/configs"
 
 export HISTSIZE=1000
 export HISTFILESIZE=2000
+export HISTFILE="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/history"
 
 # Clean-up home directory
 export XDG_CONFIG_HOME="$HOME/.config"
