@@ -17,6 +17,7 @@ export READER="zathura"
 # Used by the other "general shell" configuration files:
 export BIG="${HOME}/big"
 export CONFIGS_REPO="${HOME}/toolkit/configs"
+export BOOKMARKS_REPO="${HOME}/toolkit/buku-bookmarks"
 
 export HISTSIZE=1000
 export HISTFILESIZE=2000
