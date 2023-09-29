@@ -60,3 +60,5 @@ alias walp="variety -p > /dev/null"
 
 alias atch="sudo ~/toolkit/mndrives.sh attach"
 alias undr="sudo ~/toolkit/mndrives.sh undrive"
+
+alias zap="zathura --mode presentation"
