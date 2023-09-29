@@ -53,3 +53,6 @@
 [submodule "editor/vim/bundle/vim-cpp-modern"]
 	path = editor/vim/bundle/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern
+[submodule "editor/vim/bundle/vim-colors-xcode"]
+	path = editor/vim/bundle/vim-colors-xcode
+	url = https://github.com/lunacookies/vim-colors-xcode

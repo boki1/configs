@@ -6,7 +6,8 @@ call pathogen#infect()
 call pathogen#helptags()
 
 syntax on
-filetype on
+filetype plugin on
+filetype indent on
 
 colo nord
 
