@@ -9,6 +9,6 @@ au FileType vim setlocal commentstring=\"\ %s
 
 " Text width
 au Filetype gitcommit setlocal spell tw=72 colorcolumn=73
-au Filetype tex setlocal spell tw=80 colorcolumn=81
-au Filetype text setlocal spell tw=72 colorcolumn=73
-au Filetype markdown setlocal spell tw=72 colorcolumn=73
+au Filetype tex setlocal nospell tw=80 colorcolumn=81
+au Filetype text setlocal nospell tw=72 colorcolumn=73
+au Filetype markdown setlocal nospell tw=72 colorcolumn=73
