@@ -41,22 +41,22 @@ set timeoutlen=300
 set encoding=utf-8
 set scrolloff=2
 
-" set noshowmode
-" set hidden
-" set nowrap
-" set nojoinspaces
+set noshowmode
+set hidden
+set nowrap
+set nojoinspaces
 
-" set splitright
-" set splitbelow
+set splitright
+set splitbelow
 
-" set wildmenu
-" set wildmode=longest:list,full
-" set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+set wildmenu
+set wildmode=longest:list,full
+set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
 set incsearch
 set ignorecase
 set smartcase
-" set gdefault
+set gdefault
 
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
