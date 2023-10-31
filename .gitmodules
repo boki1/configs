@@ -56,3 +56,6 @@
 [submodule "editor/vim/bundle/vim-colors-xcode"]
 	path = editor/vim/bundle/vim-colors-xcode
 	url = https://github.com/lunacookies/vim-colors-xcode
+[submodule "editor/vim/bundle/flex-bison-syntax"]
+	path = editor/vim/bundle/flex-bison-syntax
+	url = https://github.com/calincru/flex-bison-syntax
